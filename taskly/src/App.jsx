@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import TaskIcon from '@mui/icons-material/Task';
 
 function App() {
   const [taskState, setTaskState] = useState({
@@ -83,14 +84,19 @@ function App() {
           align="center"
           gutterBottom
           sx={{
-            backgroundColor: 'gray',
+            backgroundColor: 'navy',
             textAlign: 'center',
             color: 'white',
             padding: '20px',
             margin: '20px 0 40px 0',
-            borderRadius: '4px'
+            borderRadius: '50px',
+            '&:hover': {
+              transform: 'scale(0.99)',
+              transition: 'transform 0.3s ease-in-out',
+            }
           }}
         >
+          <TaskIcon sx={{ margin: '20px 20px 0 0', fontSize: '48px' }}/>
           Taskly
         </Typography>
       </Container>
@@ -101,7 +107,6 @@ function App() {
         <Grid
           container
           spacing={5}
-          alignItems="flex-start"
           sx={{ justifyContent: "center" }}
         >
           {taskState.tasks.map((task, index) => (
