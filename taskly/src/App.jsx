@@ -7,6 +7,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import TaskIcon from '@mui/icons-material/Task';
+import Divider from '@mui/material/Divider';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import CheckIcon from '@mui/icons-material/CheckCircle';
 
 function App() {
   const [taskState, setTaskState] = useState({
@@ -21,14 +25,25 @@ function App() {
     title: "",
     description: "",
     deadline: "",
-    priority: "Medium" // default value
+    priority: "Medium", // default value
+    done: false
   });
+
+  const [formAlertState, setFormAlertState] = useState(false);
 
   const doneHandler = (taskIndex) => {
     const tasks = [...taskState.tasks];
     tasks[taskIndex].done = !tasks[taskIndex].done;
     setTaskState({ tasks });
     // console.log(`${taskIndex} ${tasks[taskIndex].done}`);
+
+    if (tasks[taskIndex].done) {
+      setFormAlertState(true);
+    }
+  }
+
+  const formAlertCloseHandler = () => {
+    setFormAlertState(false);
   }
 
   const deleteHandler = (taskIndex) => {
@@ -96,11 +111,14 @@ function App() {
             }
           }}
         >
-          <TaskIcon sx={{ margin: '20px 20px 0 0', fontSize: '48px' }}/>
+          <TaskIcon sx={{ margin: '20px 20px 0 0', fontSize: '48px' }} />
           Taskly
         </Typography>
       </Container>
       {/* End App Header */}
+
+      <Divider variant="middle" sx={{ m: '4em 4em' }} />
+
 
       {/* Task Card Grid */}
       <Container maxWidth="md" component="main">
@@ -123,6 +141,23 @@ function App() {
           ))}
         </Grid>
       </Container>
+
+      {/* Alert for form submission */}
+      <Snackbar
+        open={formAlertState}
+        autoHideDuration={3000}
+        onClose={formAlertCloseHandler}
+      >
+        <Alert
+          icon={<CheckIcon fontSize="inherit" />}
+          severity="success"
+          onClose={formAlertCloseHandler}
+          variant="filled"
+        >
+          Task Completed!
+        </Alert>
+      </Snackbar>
+      {/* End Alert for form submission */}
       {/* End Task Card Grid */}
 
       {/* Footer - Add Task Form */}

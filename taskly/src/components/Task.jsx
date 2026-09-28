@@ -7,8 +7,10 @@ import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import SubmitIcon from '@mui/icons-material/CheckCircle';
 
 
 const Task = (props) => {
@@ -91,8 +93,13 @@ const Task = (props) => {
                             }
                         }}
                     >
-                        <CheckCircleIcon sx={{ pr: '2px' }} />
-                        Done
+                        <Tooltip title="Done">
+                            <IconButton>
+                                <SubmitIcon sx={{ color: 'white' }} />
+                            </IconButton>
+                        </Tooltip>
+                        {/* <CheckCircleIcon sx={{ pr: '2px' }} />
+                        Done */}
                     </Button>
 
                     <Button
@@ -108,8 +115,13 @@ const Task = (props) => {
                             }
                         }}
                     >
-                        <RemoveCircleIcon sx={{ pr: '2px' }} />
-                        Delete
+                        <Tooltip title="Delete">
+                            <IconButton>
+                                <DeleteIcon sx={{ color: 'white' }} />
+                            </IconButton>
+                        </Tooltip>
+                        {/* <RemoveCircleIcon sx={{ pr: '2px' }} />
+                        Delete */}
                     </Button>
                 </CardActions>
             </Card>
