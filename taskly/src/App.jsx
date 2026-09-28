@@ -124,7 +124,8 @@ function App() {
       <Container maxWidth="md" component="main">
         <Grid
           container
-          spacing={5}
+          spacing={{ xs: 2, sm: 3, md: 4}}
+          // spacing={5}
           sx={{ justifyContent: "center" }}
         >
           {taskState.tasks.map((task, index) => (

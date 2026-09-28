@@ -18,13 +18,15 @@ const Task = (props) => {
     return (
         <Grid
             key={props.id}
-            size={{ xs: 12, md: 4 }}
+            size={{ xs: 12, sm: 6, md: 4 }}
+            sx={{mb: '2em'}}
         >
             <Card
                 sx={{
                     backgroundColor: props.done ? 'lightgreen' : 'lightblue',
                     border: props.done ? '2px dotted green' : 'inherit',
                     padding: '20px',
+                    height: '100%',
                     '&:hover': {
                         transform: 'scale(1.02)',
                         transition: 'transform 0.33s ease-in-out',
